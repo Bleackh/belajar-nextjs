@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 
 const DetailProductPage = () => {
-    const {query} = useRouter();
+    const { query } = useRouter();
     // console.log(router);
     return (
         <div>

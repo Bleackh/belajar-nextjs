@@ -2,10 +2,10 @@ import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 
 type productType = {
-    id: number
-    name: string
-    price: number
-    size: string
+    id: number;
+    name: string;
+    price: number;
+    size: string;
 }
 
 const ProductPage = () => {
@@ -22,7 +22,7 @@ const ProductPage = () => {
         fetch('/api/product')
             .then((res) => res.json())
             .then((response) => {
-                // console.log(data)
+                console.log(response)
                 setProducts(response.data)
             });
     }, [])
@@ -30,8 +30,12 @@ const ProductPage = () => {
     return (
         <div>
             <h1>Product Page</h1>
-            {products.map((product: productType) => (
-                <div key={product.id}>{product.name}</div>
+            {products.map((product: productType, index: number) => (
+                <div key={product.id}>
+                    <p>{index + 1}. {product.name}</p>
+                    <p>Price: ${product.price}</p>
+                    <p>Size: {product.size}</p>
+                </div>
             ))}
         </div>
     )
